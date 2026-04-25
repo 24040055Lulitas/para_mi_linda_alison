@@ -27,9 +27,9 @@ button {
 /* ── 1. TABLET (≤ 900px) ── */
 @media (max-width: 900px) {
   .hero__name { font-size: clamp(3rem, 16vw, 7rem); }
-  .album-hero { padding: 0 2rem 3rem; min-height: 85vh; }
-  .album-hero__content { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
-  .album-hero__cover { width: 180px; height: 180px; }
+  .album-hero { padding: 90px 2rem 3rem; min-height: auto; }
+  .album-hero__content { flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; }
+  .album-hero__cover { width: 160px; height: 160px; }
   .album-hero__for-alison { border-left: none; border-top: 2px solid; border-radius: 0 0 8px 8px; text-align: center; }
   .albums__grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .player { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 0.5rem; padding: 0.75rem 1.25rem; }
@@ -62,13 +62,16 @@ button {
   .album-card__title { font-size: 1rem; }
 
   /* Álbum hero */
-  .album-hero { padding: 0 1.25rem 2.5rem; min-height: 70vh; }
-  .album-hero__content { gap: 1.25rem; }
-  .album-hero__cover { width: 150px; height: 150px; }
-  .album-hero__title { font-size: clamp(1.8rem, 8vw, 3rem); }
+  .album-hero { padding: 80px 1.25rem 2.5rem; min-height: auto; }
+  .album-hero__content { gap: 1rem; padding-bottom: 0.5rem; }
+  /* Portada centrada y tamaño adecuado en móvil */
+  .album-hero__cover-wrap { display: flex; justify-content: center; width: 100%; }
+  .album-hero__cover { width: 140px; height: 140px; margin: 0 auto; }
+  /* Título en una línea o máximo 2 líneas cómodas */
+  .album-hero__title { font-size: clamp(1.6rem, 7vw, 2.5rem); line-height: 1.1; word-break: break-word; hyphens: auto; }
   .album-hero__artist { font-size: 1rem; }
-  .album-hero__quote { font-size: 0.9rem; max-width: 100%; }
-  .album-hero__for-alison p { font-size: 0.9rem; }
+  .album-hero__quote { font-size: 0.875rem; max-width: 100%; }
+  .album-hero__for-alison p { font-size: 0.875rem; }
 
   /* Navbar */
   .album-nav { padding: 0.875rem 1.25rem; }
@@ -116,8 +119,8 @@ button {
 @media (max-width: 480px) {
   .hero__name { font-size: clamp(2.5rem, 20vw, 4.5rem); }
   .albums__grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-  .album-hero__cover { width: 130px; height: 130px; }
-  .album-hero__title { font-size: clamp(1.6rem, 9vw, 2.5rem); }
+  .album-hero__cover { width: 120px; height: 120px; }
+  .album-hero__title { font-size: clamp(1.4rem, 8.5vw, 2.2rem); }
   .tracklist__item { padding: 0.65rem 0.75rem; }
   .player { padding: 0.65rem 0.875rem; padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px)); }
   .player__buttons { gap: 0.875rem; }
@@ -130,8 +133,8 @@ button {
   .albums__grid { gap: 0.5rem; }
   .album-card__title { font-size: 0.875rem; }
   .album-card__year, .album-card__songs { font-size: 0.65rem; }
-  .album-hero { padding: 0 1rem 2rem; }
-  .album-hero__cover { width: 110px; height: 110px; }
+  .album-hero { padding: 75px 1rem 2rem; }
+  .album-hero__cover { width: 100px; height: 100px; }
   .tracklist__item { grid-template-columns: 28px 1fr auto; gap: 0.5rem; padding: 0.6rem 0.5rem; }
   .tracklist__number { font-size: 0.7rem; }
   .tracklist__title { font-size: 0.8rem; }

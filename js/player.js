@@ -218,9 +218,29 @@
   }
 
   /* ═══════════════════════════════════════════════════
-     7. SIGUIENTE / ANTERIOR
+     7. SIGUIENTE / ANTERIOR — con soporte de cola global
   ═══════════════════════════════════════════════════ */
   function nextTrack() {
+    // Primero revisar si hay algo en la cola global
+    if (window.LDR_Queue && window.LDR_Queue.hasNext()) {
+      const qItem = window.LDR_Queue.shiftNext();
+      if (qItem) {
+        // Reproducir desde la cola: cambiar src directamente
+        audio.src = qItem.src;
+        audio.load();
+        if (playerTitle) playerTitle.textContent = qItem.title;
+        if (progressFill) progressFill.style.width = "0%";
+        if (timeCurrent)  timeCurrent.textContent  = "0:00";
+        if (timeTotal)    timeTotal.textContent    = "0:00";
+        // Desmarcar tracklist (es de otro álbum posiblemente)
+        tracklistItems.forEach(el => el.classList.remove("active"));
+        setupMediaSession({ title: qItem.title, src: qItem.src });
+        playAudio();
+        return;
+      }
+    }
+
+    // Si no hay cola, seguir con el álbum normal
     let next;
     if (isShuffle) {
       do { next = Math.floor(Math.random() * tracks.length); }
@@ -399,7 +419,23 @@
   });
 
   /* ═══════════════════════════════════════════════════
-     14. INICIO — carga pista 0 sin autoplay
+     14. ESCUCHAR EVENTO DE COLA (queue.js)
+  ═══════════════════════════════════════════════════ */
+  document.addEventListener("queue:play", (e) => {
+    const { src, title } = e.detail;
+    audio.src = src;
+    audio.load();
+    if (playerTitle) playerTitle.textContent = title;
+    if (progressFill) progressFill.style.width = "0%";
+    if (timeCurrent)  timeCurrent.textContent  = "0:00";
+    if (timeTotal)    timeTotal.textContent    = "0:00";
+    tracklistItems.forEach(el => el.classList.remove("active"));
+    setupMediaSession({ title, src });
+    playAudio();
+  });
+
+  /* ═══════════════════════════════════════════════════
+     15. INICIO — carga pista 0 sin autoplay
   ═══════════════════════════════════════════════════ */
   loadTrack(0, false);
 

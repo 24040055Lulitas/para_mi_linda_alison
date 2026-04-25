@@ -25,7 +25,8 @@ body[data-album="born-to-die"] {
   min-height: 75vh;
   display: flex;
   align-items: flex-end;
-  padding: 0 var(--space-2xl) var(--space-3xl);
+  /* padding-top compensa la navbar fija (~64px) para que el contenido no quede tapado */
+  padding: 80px var(--space-2xl) var(--space-3xl);
   overflow: hidden;
 }
 
