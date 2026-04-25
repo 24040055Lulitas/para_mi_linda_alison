@@ -294,16 +294,23 @@
       btnFav.title = isFav(src) ? "Quitar de favoritas" : "Añadir a favoritas";
       btnFav.innerHTML = isFav(src) ? "♥" : "♡";
       btnFav.setAttribute("aria-label", "Favorita");
+      // type="button" evita comportamientos raros en formularios / Safari
+      btnFav.type = "button";
 
-      btnFav.addEventListener("click", (e) => {
+      function doFav(e) {
         e.stopPropagation();
+        e.preventDefault();
         const added = toggleFav(src, title, albumName, cover);
         btnFav.innerHTML = added ? "♥" : "♡";
         btnFav.classList.toggle("is-fav", added);
         btnFav.title = added ? "Quitar de favoritas" : "Añadir a favoritas";
-        // Si hay sección de favoritas en esta página, actualizar
         if (typeof renderFavSection === "function") renderFavSection();
-      });
+      }
+
+      // iOS Safari necesita touchend en el botón para responder sin delay
+      btnFav.addEventListener("touchend", (e) => { doFav(e); }, { passive: false });
+      // Click como fallback para desktop y Android
+      btnFav.addEventListener("click",    (e) => { doFav(e); });
 
       // Botón cola
       const btnQ = document.createElement("button");
@@ -311,13 +318,20 @@
       btnQ.title = "Añadir a la cola";
       btnQ.innerHTML = "+Cola";
       btnQ.setAttribute("aria-label", "Añadir a la cola");
+      btnQ.type = "button";
 
-      btnQ.addEventListener("click", (e) => {
+      function doQueue(e) {
         e.stopPropagation();
+        e.preventDefault();
         addToQueue(src, title, albumName, cover);
         btnQ.classList.add("in-queue");
         setTimeout(() => btnQ.classList.remove("in-queue"), 1500);
-      });
+      }
+
+      // iOS Safari: touchend directo en el botón
+      btnQ.addEventListener("touchend", (e) => { doQueue(e); }, { passive: false });
+      // Click como fallback
+      btnQ.addEventListener("click",    (e) => { doQueue(e); });
 
       actions.appendChild(btnFav);
       actions.appendChild(btnQ);

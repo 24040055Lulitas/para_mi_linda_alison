@@ -67,6 +67,28 @@
   color: var(--player-accent);
 }
 
+
+/* ── iOS Safari fix — botones de acción táctiles ── */
+.btn-fav,
+.btn-queue {
+  /* Asegura que iOS trate estos elementos como tappables */
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  touch-action: manipulation;
+  /* Evita selección de texto al tocar */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Área mínima táctil de 44x44px recomendada por Apple */
+  min-width: 36px;
+  min-height: 36px;
+}
+
+/* Siempre visible en dispositivos táctiles */
+@media (hover: none) {
+  .tracklist__actions {
+    opacity: 1 !important;
+  }
+}
 /* Toast de confirmación */
 .toast {
   position: fixed;

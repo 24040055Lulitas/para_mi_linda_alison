@@ -354,21 +354,55 @@
 
   /* ═══════════════════════════════════════════════════
      11. TRACKLIST — touch sin delay + click
+     iOS FIX: NO interceptar touches sobre botones hijos
+     (.btn-fav, .btn-queue) para que funcionen correctamente
   ═══════════════════════════════════════════════════ */
   tracklistItems.forEach((item, i) => {
-    let touchMoved = false;
+    let touchMoved    = false;
+    let touchStartX   = 0;
+    let touchStartY   = 0;
 
-    item.addEventListener("touchstart", () => { touchMoved = false; }, { passive: true });
-    item.addEventListener("touchmove",  () => { touchMoved = true;  }, { passive: true });
+    item.addEventListener("touchstart", (e) => {
+      touchMoved  = false;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    item.addEventListener("touchmove", (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      // Sólo marcar como "moved" si hay desplazamiento real (>6px)
+      if (dx > 6 || dy > 6) touchMoved = true;
+    }, { passive: true });
 
     item.addEventListener("touchend", (e) => {
       if (touchMoved) return;
-      e.preventDefault(); // evita el click sintético 300ms después
+
+      // ── iOS FIX: si el toque fue sobre un botón de acción,
+      // no interceptar — dejar que el botón maneje su propio click
+      const target = e.target;
+      if (
+        target.classList.contains("btn-fav")   ||
+        target.classList.contains("btn-queue") ||
+        target.closest(".tracklist__actions")
+      ) return;
+
+      // Para el resto del item, prevenir el click sintético de 300ms
+      e.preventDefault();
       if (i === currentIndex) togglePlay();
       else loadTrack(i, true);
     });
 
-    item.addEventListener("click", () => {
+    // Click para desktop (también sirve como fallback en móvil
+    // cuando touchend no hace preventDefault)
+    item.addEventListener("click", (e) => {
+      // Si fue en un botón de acción, no reproducir
+      if (
+        e.target.classList.contains("btn-fav")   ||
+        e.target.classList.contains("btn-queue") ||
+        e.target.closest(".tracklist__actions")
+      ) return;
+
       if (i === currentIndex) togglePlay();
       else loadTrack(i, true);
     });
