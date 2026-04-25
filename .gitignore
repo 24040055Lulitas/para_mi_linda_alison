@@ -1,0 +1,22 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (por si usas herramientas de build en el futuro)
+node_modules/
+npm-debug.log
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# Los .gitkeep se pueden ignorar si ya tienes archivos reales
+# assets/images/albums/.gitkeep
+# assets/images/alison/.gitkeep

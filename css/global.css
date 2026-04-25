@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════
+   GLOBAL.CSS — Estilos base del sitio
+═══════════════════════════════════ */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── Cursor personalizado ── */
+body * {
+  cursor: url('../assets/images/cursor.png') 8 8, auto;
+}
+a, button { cursor: url('../assets/images/cursor-pointer.png') 8 8, pointer; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: var(--radius-full);
+}
+
+/* ── Selección de texto ── */
+::selection {
+  background: rgba(201, 169, 110, 0.3);
+  color: var(--color-cream);
+}
+
+/* ── Sección de dedicatoria ── */
+#dedication {
+  padding: var(--space-3xl) var(--space-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.dedication__wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  max-width: 900px;
+  width: 100%;
+}
+
+.dedication__image-frame {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dedication__photo {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  z-index: 1;
+}
+
+.dedication__frame-decor {
+  position: absolute;
+  inset: -10px;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  opacity: 0.4;
+  transform: rotate(2deg);
+}
+
+.dedication__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+}
+
+.dedication__message {
+  font-size: var(--fs-lg);
+  font-style: italic;
+  line-height: 1.9;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.dedication__signature {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  color: var(--color-rose);
+}
+
+/* ── Love note ── */
+#love-note {
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+  position: relative;
+}
+
+#love-note::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+.love-note__quote {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin: 0 auto var(--space-md);
+  line-height: 1.8;
+}
+
+.love-note__for {
+  font-size: var(--fs-md);
+  color: var(--color-rose);
+}
+
+/* ── Animaciones de entrada ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dedication__wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .dedication__photo {
+    width: 200px;
+    height: 260px;
+  }
+}

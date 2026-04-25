@@ -1,0 +1,185 @@
+/* ═══════════════════════════════════════════════════════
+   MOBILE.CSS — Responsive completo iOS & Android
+   Breakpoints: 900px · 768px · 480px · 375px
+═══════════════════════════════════════════════════════ */
+
+/* ── 0. CORRECCIONES GLOBALES iOS / ANDROID ── */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  -webkit-overflow-scrolling: touch;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ── 1. TABLET (≤ 900px) ── */
+@media (max-width: 900px) {
+  .hero__name { font-size: clamp(3rem, 16vw, 7rem); }
+  .album-hero { padding: 0 2rem 3rem; min-height: 85vh; }
+  .album-hero__content { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+  .album-hero__cover { width: 180px; height: 180px; }
+  .album-hero__for-alison { border-left: none; border-top: 2px solid; border-radius: 0 0 8px 8px; text-align: center; }
+  .albums__grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .player { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 0.5rem; padding: 0.75rem 1.25rem; }
+  .player__song-info { grid-column: 1; grid-row: 1; }
+  .player__right { grid-column: 2; grid-row: 1; justify-content: flex-end; }
+  .player__controls { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* ── 2. MÓVIL GRANDE (≤ 768px) ── */
+@media (max-width: 768px) {
+  /* Hero index */
+  #hero { background-attachment: scroll; }
+  .hero__subtitle { font-size: 0.8rem; letter-spacing: 0.15em; }
+  .hero__name { font-size: clamp(2.8rem, 18vw, 5.5rem); letter-spacing: 0.05em; }
+  .hero__quote { font-size: 1rem; padding: 0 1rem; }
+  .hero__cta { padding: 0.65rem 2rem; font-size: 0.875rem; }
+
+  /* Dedicatoria */
+  #dedication { padding: 3rem 1.5rem; }
+  .dedication__wrapper { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+  .dedication__photo { width: 180px; height: 240px; }
+  .dedication__title { font-size: 1.5rem; }
+  .dedication__message { font-size: 1rem; }
+
+  /* Grid álbumes */
+  #albums { padding: 3rem 1rem; }
+  .albums__title { font-size: 1.75rem; }
+  .albums__grid { grid-template-columns: repeat(2, 1fr); gap: 0.875rem; }
+  .album-card__info { padding: 0.875rem; }
+  .album-card__title { font-size: 1rem; }
+
+  /* Álbum hero */
+  .album-hero { padding: 0 1.25rem 2.5rem; min-height: 70vh; }
+  .album-hero__content { gap: 1.25rem; }
+  .album-hero__cover { width: 150px; height: 150px; }
+  .album-hero__title { font-size: clamp(1.8rem, 8vw, 3rem); }
+  .album-hero__artist { font-size: 1rem; }
+  .album-hero__quote { font-size: 0.9rem; max-width: 100%; }
+  .album-hero__for-alison p { font-size: 0.9rem; }
+
+  /* Navbar */
+  .album-nav { padding: 0.875rem 1.25rem; }
+  .album-nav__back { font-size: 0.75rem; }
+  .album-nav__for { font-size: 0.75rem; }
+
+  /* Tracklist */
+  .album-main { padding: 1.5rem 1rem 180px; }
+  .tracklist-section__title { font-size: 1rem; margin-bottom: 1rem; }
+  .tracklist__item { grid-template-columns: 32px 1fr auto; gap: 0.75rem; padding: 0.75rem 0.875rem; }
+  .tracklist__title { font-size: 0.875rem; }
+  .tracklist__duration { font-size: 0.7rem; }
+
+  /* ─── Reproductor mobile: stack vertical ─── */
+  .player {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+  .player__song-info { width: 100%; margin-bottom: 0.25rem; }
+  .player__thumb { width: 44px; height: 44px; }
+  .player__song-name { font-size: 0.875rem; max-width: 60vw; }
+  .player__song-album { font-size: 0.65rem; }
+  .player__controls { width: 100%; }
+  .player__buttons { gap: 1rem; justify-content: center; }
+  .player__btn { font-size: 1rem; }
+  .player__btn--play { width: 40px; height: 40px; font-size: 1.1rem; }
+  .player__progress-wrapper { gap: 0.5rem; }
+  .player__right { display: none; }
+
+  /* Love note */
+  .love-note__quote { font-size: 1rem; padding: 0 1rem; }
+
+  /* Scrollbar oculto */
+  ::-webkit-scrollbar { display: none; }
+  body { scrollbar-width: none; }
+
+  /* Partículas en pausa (rendimiento) */
+  .particle { opacity: 0 !important; animation-play-state: paused !important; }
+}
+
+/* ── 3. MÓVIL ESTÁNDAR (≤ 480px) ── */
+@media (max-width: 480px) {
+  .hero__name { font-size: clamp(2.5rem, 20vw, 4.5rem); }
+  .albums__grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .album-hero__cover { width: 130px; height: 130px; }
+  .album-hero__title { font-size: clamp(1.6rem, 9vw, 2.5rem); }
+  .tracklist__item { padding: 0.65rem 0.75rem; }
+  .player { padding: 0.65rem 0.875rem; padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px)); }
+  .player__buttons { gap: 0.875rem; }
+  .player__btn--play { width: 38px; height: 38px; }
+}
+
+/* ── 4. MÓVIL PEQUEÑO (≤ 375px) — iPhone SE ── */
+@media (max-width: 375px) {
+  .hero__name { font-size: clamp(2.2rem, 21vw, 4rem); }
+  .albums__grid { gap: 0.5rem; }
+  .album-card__title { font-size: 0.875rem; }
+  .album-card__year, .album-card__songs { font-size: 0.65rem; }
+  .album-hero { padding: 0 1rem 2rem; }
+  .album-hero__cover { width: 110px; height: 110px; }
+  .tracklist__item { grid-template-columns: 28px 1fr auto; gap: 0.5rem; padding: 0.6rem 0.5rem; }
+  .tracklist__number { font-size: 0.7rem; }
+  .tracklist__title { font-size: 0.8rem; }
+  .player { padding: 0.5rem 0.75rem; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)); }
+  .player__song-name { font-size: 0.8rem; max-width: 50vw; }
+}
+
+/* ── 5. LANDSCAPE MÓVIL ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero { min-height: 100vh; }
+  .hero__name { font-size: clamp(2rem, 10vh, 4rem); }
+  .album-hero { min-height: 100vh; padding: 0 2rem 2rem; }
+  .album-hero__content { flex-direction: row; text-align: left; align-items: flex-end; }
+  .album-hero__cover { width: 100px; height: 100px; }
+  .player { padding: 0.4rem 1rem; padding-bottom: 0.4rem; }
+  .player__btn--play { width: 34px; height: 34px; }
+}
+
+/* ── 6. SAFE AREA — notch iPhoneX+ ── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .player {
+    padding-bottom: calc(0.875rem + env(safe-area-inset-bottom));
+  }
+  .album-main {
+    padding-bottom: calc(175px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── 7. TOUCH — mejoras táctiles ── */
+@media (hover: none) and (pointer: coarse) {
+  .player__btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tracklist__item { min-height: 52px; }
+  #progress-bar { height: 6px !important; border-radius: 999px; }
+  .player__progress-fill { height: 6px; }
+
+  /* Quita hover pegado en touch */
+  .album-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-card);
+    border-color: var(--color-border);
+  }
+  .album-card:active { transform: scale(0.97); transition: transform 0.1s ease; }
+  .tracklist__item:hover { background: transparent; border-color: transparent; }
+  .tracklist__item:active { background: rgba(255,255,255,0.05); }
+}

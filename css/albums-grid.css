@@ -1,0 +1,164 @@
+/* ═══════════════════════════════════
+   ALBUMS-GRID.CSS — Grid de álbumes
+═══════════════════════════════════ */
+#albums {
+  padding: var(--space-3xl) var(--space-xl);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.albums__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.albums__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+}
+
+.albums__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* ── Grid responsive ── */
+.albums__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ── Tarjeta de álbum ── */
+.album-card {
+  display: block;
+  background: var(--card-color, var(--color-surface));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+  position: relative;
+  cursor: pointer;
+}
+
+.album-card::before {
+  /* Brillo superior */
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--card-accent, var(--color-gold)), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  z-index: 2;
+}
+
+.album-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.7),
+    0 0 30px rgba(var(--card-accent, 201,169,110), 0.15);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.album-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Cover del álbum ── */
+.album-card__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.album-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-med);
+}
+
+.album-card:hover .album-card__cover img {
+  transform: scale(1.08);
+  filter: brightness(0.7);
+}
+
+.album-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 70%);
+}
+
+.album-card:hover .album-card__overlay {
+  opacity: 1;
+}
+
+.album-card__play {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+  transform: scale(0.8);
+  transition: transform var(--transition-med);
+}
+
+.album-card:hover .album-card__play {
+  transform: scale(1);
+}
+
+/* ── Info del álbum ── */
+.album-card__info {
+  padding: var(--space-lg);
+}
+
+.album-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.album-card__year {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.album-card__songs {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  opacity: 0.7;
+}
+
+/* ── Color accent en titulo al hover ── */
+.album-card:hover .album-card__title {
+  color: var(--card-accent, var(--color-gold));
+  transition: color var(--transition-fast);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .albums__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  .albums__title { font-size: var(--fs-2xl); }
+}
+
+@media (max-width: 400px) {
+  .albums__grid {
+    grid-template-columns: 1fr;
+  }
+}

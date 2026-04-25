@@ -1,0 +1,264 @@
+/* ═══════════════════════════════════
+   PLAYER.CSS — Reproductor compartido
+   Cada álbum tiene su propia personalización
+   con variables CSS en su propio CSS de álbum
+═══════════════════════════════════ */
+
+/* ── Variables del player (se sobreescriben por álbum) ── */
+:root {
+  --player-bg:          rgba(10, 8, 15, 0.85);
+  --player-accent:      #c9a96e;
+  --player-track-bg:    rgba(255,255,255,0.1);
+  --player-text:        #f0e8e0;
+  --player-muted:       rgba(240,232,224,0.5);
+}
+
+/* ── Contenedor del player ── */
+.player {
+  position: sticky;
+  bottom: 0;
+  left: 0; right: 0;
+  background: var(--player-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: var(--space-md) var(--space-xl);
+  z-index: var(--z-nav);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* ── Info de la canción actual ── */
+.player__song-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.player__thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.player__song-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
+  color: var(--player-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.player__song-album {
+  font-size: var(--fs-xs);
+  color: var(--player-muted);
+  margin-top: 2px;
+}
+
+/* ── Controles centrales ── */
+.player__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.player__buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.player__btn {
+  background: none;
+  border: none;
+  color: var(--player-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  line-height: 1;
+}
+
+.player__btn:hover { color: var(--player-text); }
+.player__btn:active { transform: scale(0.9); }
+
+.player__btn--play {
+  width: 44px;
+  height: 44px;
+  background: var(--player-accent);
+  color: #000;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.player__btn--play:hover {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(201,169,110,0.5);
+}
+
+/* ── Barra de progreso ── */
+.player__progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.player__time {
+  font-size: var(--fs-xs);
+  color: var(--player-muted);
+  white-space: nowrap;
+  min-width: 36px;
+}
+
+.player__progress {
+  flex: 1;
+  appearance: none;
+  height: 4px;
+  background: var(--player-track-bg);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.player__progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px; height: 12px;
+  background: var(--player-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -4px;
+  position: relative;
+  z-index: 1;
+}
+
+.player__progress::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+/* Fill del progreso con JS */
+.player__progress-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: var(--player-accent);
+  pointer-events: none;
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+/* ── Volumen ── */
+.player__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.player__volume-icon {
+  color: var(--player-muted);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.player__volume {
+  appearance: none;
+  width: 80px;
+  height: 4px;
+  background: var(--player-track-bg);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+.player__volume::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px; height: 10px;
+  background: var(--player-muted);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ── Lista de canciones ── */
+.tracklist {
+  padding: var(--space-xl) 0;
+}
+
+.tracklist__item {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.tracklist__item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--color-border);
+}
+
+.tracklist__item.active {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(var(--player-accent), 0.3);
+}
+
+.tracklist__number {
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--player-muted);
+}
+
+.tracklist__item.active .tracklist__number {
+  display: none;
+}
+
+.tracklist__playing-icon {
+  display: none;
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+}
+
+.tracklist__item.active .tracklist__playing-icon { display: block; }
+
+.tracklist__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
+  color: var(--player-text);
+}
+
+.tracklist__item.active .tracklist__title {
+  color: var(--player-accent);
+}
+
+.tracklist__duration {
+  font-size: var(--fs-xs);
+  color: var(--player-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .player {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: var(--space-sm) var(--space-md);
+  }
+  .player__right { justify-content: center; }
+  .player__song-info { justify-content: center; }
+}

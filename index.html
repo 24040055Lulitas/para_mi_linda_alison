@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lana Del Rey — Para Alison 🌹</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/albums-grid.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+  <link rel="stylesheet" href="css/particles.css" />
+</head>
+<body>
+
+  <!-- Partículas decorativas -->
+  <div id="particles-container" aria-hidden="true"></div>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <header id="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Una colección especial para</p>
+      <h1 class="hero__name">Alison</h1>
+      <p class="hero__tagline">a través de la música de</p>
+      <h2 class="hero__artist">Lana Del Rey</h2>
+      <p class="hero__quote">"Born to die, but living to love you."</p>
+      <a href="#albums" class="hero__cta">Explorar álbumes</a>
+    </div>
+    <div class="hero__scroll-indicator">
+      <span></span>
+    </div>
+  </header>
+
+  <!-- ══════════════ DEDICATORIA ══════════════ -->
+  <section id="dedication">
+    <div class="dedication__wrapper">
+      <div class="dedication__image-frame">
+        <!-- Foto de Alison: assets/images/alison/main.jpg -->
+        <img src="assets/images/alison/main.jpg" alt="Alison" class="dedication__photo" onerror="this.src='assets/images/placeholder.jpg'" />
+        <div class="dedication__frame-decor"></div>
+      </div>
+      <div class="dedication__text">
+        <h3 class="dedication__title">Para ti, Alison</h3>
+        <p class="dedication__message">
+          <!-- Personaliza este mensaje -->
+          Cada canción en esta página fue elegida pensando en ti.
+          Que la voz de Lana te envuelva como siempre lo hace,
+          y que este pequeño mundo digital sea un reflejo
+          de todo lo que siento cada vez que pienso en ti.
+        </p>
+        <span class="dedication__signature">Con todo mi amor 🌹</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ GRID DE ÁLBUMES ══════════════ -->
+  <main id="albums">
+    <div class="albums__header">
+      <h2 class="albums__title">Discografía</h2>
+      <p class="albums__subtitle">Elige un álbum y sumérgete</p>
+    </div>
+
+    <div class="albums__grid">
+
+      <!-- Tarjeta: Born to Die -->
+      <a href="html/born-to-die.html" class="album-card" data-album="born-to-die" style="--card-color: #1a0a2e; --card-accent: #9b59b6;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/born-to-die.jpg" alt="Born to Die" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Born to Die</h3>
+          <p class="album-card__year">2012</p>
+          <p class="album-card__songs">15 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Paradise EP -->
+      <a href="html/paradise.html" class="album-card" data-album="paradise" style="--card-color: #0d1f0d; --card-accent: #27ae60;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/paradise.jpg" alt="Paradise EP" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Paradise</h3>
+          <p class="album-card__year">2012 · EP</p>
+          <p class="album-card__songs">8 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Ultraviolence -->
+      <a href="html/ultraviolence.html" class="album-card" data-album="ultraviolence" style="--card-color: #1a1200; --card-accent: #c0a060;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/ultraviolence.jpg" alt="Ultraviolence" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Ultraviolence</h3>
+          <p class="album-card__year">2014</p>
+          <p class="album-card__songs">12 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Honeymoon -->
+      <a href="html/honeymoon.html" class="album-card" data-album="honeymoon" style="--card-color: #1a0f0f; --card-accent: #e8b4b8;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/honeymoon.jpg" alt="Honeymoon" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Honeymoon</h3>
+          <p class="album-card__year">2015</p>
+          <p class="album-card__songs">14 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Lust for Life -->
+      <a href="html/lust-for-life.html" class="album-card" data-album="lust-for-life" style="--card-color: #0a0a1a; --card-accent: #4fc3f7;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/lust-for-life.jpg" alt="Lust for Life" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Lust for Life</h3>
+          <p class="album-card__year">2017</p>
+          <p class="album-card__songs">16 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Norman Rockwell -->
+      <a href="html/norman-rockwell.html" class="album-card" data-album="norman-rockwell" style="--card-color: #0f0f14; --card-accent: #a8d8ea;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/norman-rockwell.jpg" alt="Norman Rockwell!" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Norman Rockwell!</h3>
+          <p class="album-card__year">2019</p>
+          <p class="album-card__songs">14 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Blue Banisters -->
+      <a href="html/blue-banisters.html" class="album-card" data-album="blue-banisters" style="--card-color: #070d1a; --card-accent: #5b8fd4;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/blue-banisters.jpg" alt="Blue Banisters" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Blue Banisters</h3>
+          <p class="album-card__year">2021</p>
+          <p class="album-card__songs">15 canciones</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta: Did You Know -->
+      <a href="html/did-you-know.html" class="album-card" data-album="did-you-know" style="--card-color: #100a00; --card-accent: #d4a843;">
+        <div class="album-card__cover">
+          <img src="assets/images/albums/did-you-know.jpg" alt="Did You Know That There's a Tunnel Under Ocean Blvd" onerror="this.src='assets/images/placeholder.jpg'" />
+          <div class="album-card__overlay">
+            <span class="album-card__play">▶</span>
+          </div>
+        </div>
+        <div class="album-card__info">
+          <h3 class="album-card__title">Did You Know…</h3>
+          <p class="album-card__year">2023</p>
+          <p class="album-card__songs">16 canciones</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- ══════════════ FRASE FINAL ══════════════ -->
+  <section id="love-note">
+    <div class="love-note__wrapper">
+      <p class="love-note__quote">"You are the ocean and I am the shore — always reaching, never quite enough."</p>
+      <p class="love-note__for">— Para Alison, con amor infinito 🌙</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer id="footer">
+    <p class="footer__text">Hecho con 🌹 para <strong>Alison</strong> · Lana Del Rey Fan Page</p>
+    <p class="footer__credit">Toda la música pertenece a sus respectivos autores.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

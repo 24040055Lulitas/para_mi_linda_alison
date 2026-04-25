@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Born to Die — Lana Del Rey · Para Alison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/player.css" />
+  <link rel="stylesheet" href="../css/particles.css" />
+  <link rel="stylesheet" href="../css/mobile.css" />
+
+  <!-- CSS específico de este álbum -->
+  <link rel="stylesheet" href="../css/albums/born-to-die.css" />
+</head>
+<body class="album-page" data-album="born-to-die">
+
+  <!-- Partículas -->
+  <div id="particles-container" aria-hidden="true"></div>
+
+  <!-- ── Navbar de retorno ── -->
+  <nav class="album-nav">
+    <a href="../index.html" class="album-nav__back">
+      ← Volver
+    </a>
+    <span class="album-nav__for">Para Alison 🌹</span>
+  </nav>
+
+  <!-- ── Hero del álbum ── -->
+  <header class="album-hero">
+    <div class="album-hero__bg" aria-hidden="true"></div>
+    <div class="album-hero__overlay"></div>
+    <div class="album-hero__content">
+      <div class="album-hero__cover-wrap">
+        <img
+          src="../assets/images/albums/born-to-die.jpg"
+          alt="Born to Die"
+          class="album-hero__cover"
+        />
+      </div>
+      <div class="album-hero__info">
+        <p class="album-hero__label">Álbum</p>
+        <h1 class="album-hero__title">Born to Die</h1>
+        <p class="album-hero__artist">Lana Del Rey</p>
+        <p class="album-hero__meta">2012 · 15 canciones · Dream pop · Baroque pop</p>
+        <p class="album-hero__quote">
+          "Blue jeans, white shirt, walked into the room — you know you made my eyes burn."
+        </p>
+        <!-- Frase para Alison -->
+        <div class="album-hero__for-alison">
+          <p>Para ti, Alison — esta fue la primera vez que sentí que las canciones podían hablar por mí.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Cuerpo principal ── -->
+  <main class="album-main">
+
+    <!-- Lista de canciones -->
+    <section class="tracklist-section">
+      <h2 class="tracklist-section__title">Canciones</h2>
+      <div class="tracklist" id="tracklist">
+
+        <!-- Canción 1 -->
+        <div class="tracklist__item" data-index="0" data-src="../assets/mp3/born-to-die/01-born-to-die.mp3">
+          <span class="tracklist__number">1</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)">
+            <rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect>
+            <rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect>
+          </svg>
+          <span class="tracklist__title">Born to Die</span>
+          <span class="tracklist__duration">4:46</span>
+        </div>
+
+        <!-- Canción 2 -->
+        <div class="tracklist__item" data-index="1" data-src="../assets/mp3/born-to-die/02-off-to-the-races.mp3">
+          <span class="tracklist__number">2</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)">
+            <rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect>
+            <rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect>
+          </svg>
+          <span class="tracklist__title">Off to the Races</span>
+          <span class="tracklist__duration">5:51</span>
+        </div>
+
+        <!-- Canción 3 -->
+        <div class="tracklist__item" data-index="2" data-src="../assets/mp3/born-to-die/03-blue-jeans.mp3">
+          <span class="tracklist__number">3</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)">
+            <rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect>
+            <rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect>
+          </svg>
+          <span class="tracklist__title">Blue Jeans</span>
+          <span class="tracklist__duration">3:31</span>
+        </div>
+
+        <!-- Canción 4 -->
+        <div class="tracklist__item" data-index="3" data-src="../assets/mp3/born-to-die/04-video-games.mp3">
+          <span class="tracklist__number">4</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)">
+            <rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect>
+            <rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect>
+          </svg>
+          <span class="tracklist__title">Video Games</span>
+          <span class="tracklist__duration">4:44</span>
+        </div>
+
+        <!-- Canción 5 -->
+        <div class="tracklist__item" data-index="4" data-src="../assets/mp3/born-to-die/05-diet-mountain-dew.mp3">
+          <span class="tracklist__number">5</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)">
+            <rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect>
+            <rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect>
+            <rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect>
+          </svg>
+          <span class="tracklist__title">Diet Mountain Dew</span>
+          <span class="tracklist__duration">3:42</span>
+        </div>
+
+        <!-- Canción 6 -->
+        <div class="tracklist__item" data-index="5" data-src="../assets/mp3/born-to-die/06-national-anthem.mp3">
+          <span class="tracklist__number">6</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">National Anthem</span>
+          <span class="tracklist__duration">4:10</span>
+        </div>
+
+        <!-- Canción 7 -->
+        <div class="tracklist__item" data-index="6" data-src="../assets/mp3/born-to-die/07-dark-paradise.mp3">
+          <span class="tracklist__number">7</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Dark Paradise</span>
+          <span class="tracklist__duration">4:07</span>
+        </div>
+
+        <!-- Canción 8 -->
+        <div class="tracklist__item" data-index="7" data-src="../assets/mp3/born-to-die/08-radio.mp3">
+          <span class="tracklist__number">8</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Radio</span>
+          <span class="tracklist__duration">3:32</span>
+        </div>
+
+        <!-- Canción 9 -->
+        <div class="tracklist__item" data-index="8" data-src="../assets/mp3/born-to-die/09-carmen.mp3">
+          <span class="tracklist__number">9</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Carmen</span>
+          <span class="tracklist__duration">4:14</span>
+        </div>
+
+        <!-- Canción 10 -->
+        <div class="tracklist__item" data-index="9" data-src="../assets/mp3/born-to-die/10-million-dollar-man.mp3">
+          <span class="tracklist__number">10</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Million Dollar Man</span>
+          <span class="tracklist__duration">3:59</span>
+        </div>
+
+        <!-- Canción 11 -->
+        <div class="tracklist__item" data-index="10" data-src="../assets/mp3/born-to-die/11-summertime-sadness.mp3">
+          <span class="tracklist__number">11</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Summertime Sadness</span>
+          <span class="tracklist__duration">4:25</span>
+        </div>
+
+        <!-- Canción 12 -->
+        <div class="tracklist__item" data-index="11" data-src="../assets/mp3/born-to-die/12-this-is-what-makes-us-girls.mp3">
+          <span class="tracklist__number">12</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">This Is What Makes Us Girls</span>
+          <span class="tracklist__duration">3:42</span>
+        </div>
+
+        <!-- Canción 13 — Edición deluxe -->
+        <div class="tracklist__item deluxe" data-index="12" data-src="../assets/mp3/born-to-die/13-without-you.mp3">
+          <span class="tracklist__number">13</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Without You</span>
+          <span class="tracklist__duration">4:07</span>
+        </div>
+
+        <!-- Canción 14 -->
+        <div class="tracklist__item deluxe" data-index="13" data-src="../assets/mp3/born-to-die/14-lolita.mp3">
+          <span class="tracklist__number">14</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Lolita</span>
+          <span class="tracklist__duration">3:51</span>
+        </div>
+
+        <!-- Canción 15 -->
+        <div class="tracklist__item deluxe" data-index="14" data-src="../assets/mp3/born-to-die/15-lucky-ones.mp3">
+          <span class="tracklist__number">15</span>
+          <svg class="tracklist__playing-icon" viewBox="0 0 24 24" fill="var(--player-accent)"><rect x="2" y="4" width="4" height="16"><animate attributeName="height" values="16;6;16" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y" values="4;9;4" dur="1.2s" repeatCount="indefinite"/></rect><rect x="10" y="4" width="4" height="16"><animate attributeName="height" values="16;10;16" dur="0.9s" repeatCount="indefinite"/><animate attributeName="y" values="4;7;4" dur="0.9s" repeatCount="indefinite"/></rect><rect x="18" y="4" width="4" height="16"><animate attributeName="height" values="16;4;16" dur="1.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="1.5s" repeatCount="indefinite"/></rect></svg>
+          <span class="tracklist__title">Lucky Ones</span>
+          <span class="tracklist__duration">4:15</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ REPRODUCTOR FIJO ══ -->
+  <div class="player" id="player" aria-label="Reproductor de música">
+
+    <!-- Info canción actual -->
+    <div class="player__song-info">
+      <img src="../assets/images/albums/born-to-die.jpg" alt="" class="player__thumb" id="player-thumb" />
+      <div>
+        <p class="player__song-name" id="player-title">Born to Die</p>
+        <p class="player__song-album">Born to Die · 2012</p>
+      </div>
+    </div>
+
+    <!-- Controles -->
+    <div class="player__controls">
+      <div class="player__buttons">
+        <button class="player__btn" id="btn-shuffle" title="Aleatorio">⇄</button>
+        <button class="player__btn" id="btn-prev" title="Anterior">⏮</button>
+        <button class="player__btn player__btn--play" id="btn-play" title="Play/Pausa">▶</button>
+        <button class="player__btn" id="btn-next" title="Siguiente">⏭</button>
+        <button class="player__btn" id="btn-loop" title="Repetir">↺</button>
+      </div>
+
+      <div class="player__progress-wrapper">
+        <span class="player__time" id="time-current">0:00</span>
+        <div style="flex:1; position:relative; height:4px; background:var(--player-track-bg); border-radius:999px; cursor:pointer;" id="progress-bar">
+          <div class="player__progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <span class="player__time" id="time-total">0:00</span>
+      </div>
+    </div>
+
+    <!-- Volumen -->
+    <div class="player__right">
+      <span class="player__volume-icon" id="vol-icon">🔊</span>
+      <input type="range" class="player__volume" id="volume" min="0" max="1" step="0.01" value="0.8" />
+    </div>
+
+  </div>
+
+  <!-- Audio element oculto -->
+  <audio id="audio" preload="metadata"></audio>
+
+  <!-- Scripts -->
+  <script src="../js/particles.js"></script>
+  <script src="../js/player.js"></script>
+</body>
+</html>
