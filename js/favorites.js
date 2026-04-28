@@ -65,12 +65,19 @@
         </div>
       `;
 
-      // +Cola → agrega a queue en localStorage
+      // +Cola → agrega a queue
       card.querySelector(".fav-card__play").addEventListener("click", (e) => {
         e.stopPropagation();
-        const queue = JSON.parse(localStorage.getItem("ldr_queue") || "[]");
-        queue.push({ ...fav, id: Date.now() + Math.random() });
-        localStorage.setItem("ldr_queue", JSON.stringify(queue));
+        // Si estamos en iframe, decirle al shell que añada a la cola
+        if (window.self !== window.top) {
+          parent.postMessage({ type: "ADD_QUEUE",
+            src: fav.src, title: fav.title, album: fav.album,
+            cover: fav.cover, slug: fav.slug || "" }, "*");
+        } else {
+          const queue = JSON.parse(localStorage.getItem("ldr_queue") || "[]");
+          queue.push({ ...fav, id: Date.now() + Math.random() });
+          localStorage.setItem("ldr_queue", JSON.stringify(queue));
+        }
         showToast(`+ Cola: ${fav.title}`);
       });
 
@@ -84,10 +91,16 @@
         showToast("♡ Quitado de favoritas");
       });
 
-      // Click en la tarjeta → ir al álbum
+      // Click en la tarjeta → ir al álbum (via postMessage si estamos en iframe)
       card.addEventListener("click", () => {
         const page = albumPages[fav.album];
-        if (page) window.location.href = page;
+        if (!page) return;
+        if (window.self !== window.top) {
+          // Estamos dentro del iframe — navegar el iframe sin romper el shell
+          window.location.href = page;
+        } else {
+          window.location.href = page;
+        }
       });
 
       grid.appendChild(card);

@@ -1,0 +1,254 @@
+/* ── Colores del mini-player por álbum ── */
+body[data-album="born-to-die"]    { --mp-accent: #9b59b6; }
+body[data-album="paradise"]       { --mp-accent: #27ae60; }
+body[data-album="ultraviolence"]  { --mp-accent: #c0a060; }
+body[data-album="honeymoon"]      { --mp-accent: #e8b4b8; }
+body[data-album="lust-for-life"]  { --mp-accent: #4fc3f7; }
+body[data-album="norman-rockwell"]{ --mp-accent: #a8d8ea; }
+body[data-album="blue-banisters"] { --mp-accent: #5b8fd4; }
+body[data-album="did-you-know"]   { --mp-accent: #d4a843; }
+/* En el index usar el dorado global */
+body:not([data-album]) { --mp-accent: #c9a96e; }
+
+/* ═══════════════════════════════════════════════════════
+   MINI-PLAYER.CSS — Reproductor flotante persistente
+   Aparece en TODAS las páginas (index + álbumes)
+═══════════════════════════════════════════════════════ */
+
+.mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(8, 5, 16, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  /* Respeta el safe-area (notch iPhone) */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Aparece cuando hay canción activa */
+.mini-player.visible {
+  transform: translateY(0);
+}
+
+.mini-player__inner {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+}
+
+/* Portada */
+.mini-player__cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Info */
+.mini-player__info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mini-player__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  color: #f0e8e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.mini-player__album {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  color: rgba(240,232,224,0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* Controles */
+.mini-player__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.mini-player__btn {
+  background: none;
+  border: none;
+  color: rgba(240,232,224,0.55);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  line-height: 1;
+  transition: color 0.2s, background 0.2s;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.mini-player__btn:hover,
+.mini-player__btn:active {
+  color: #f0e8e0;
+  background: rgba(255,255,255,0.07);
+}
+
+/* Botón play destacado */
+.mini-player__btn--play {
+  width: 38px;
+  height: 38px;
+  background: var(--mp-accent, #9b59b6);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+.mini-player__btn--play:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Cola — badge numérico */
+.mini-player__btn--queue {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.mp-queue-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--mp-accent, #9b59b6);
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: bold;
+  min-width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Cerrar */
+.mini-player__btn--close {
+  color: rgba(240,232,224,0.3);
+  font-size: 0.875rem;
+}
+.mini-player__btn--close:hover {
+  color: #e8a0a0;
+  background: rgba(232,160,160,0.1);
+}
+
+/* Barra de progreso (decorativa, delgada) */
+.mini-player__progress-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  position: relative;
+}
+
+.mini-player__progress-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: var(--mp-accent, #9b59b6);
+  transition: width 0.3s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Animación de "tocando ahora" en el título ── */
+.mini-player.is-playing .mini-player__title {
+  color: var(--mp-accent, #c9a96e);
+}
+
+/* ─────────────────────────────────────────────────────
+   ADAPTAR EL PADDING DEL CONTENIDO PARA EL MINI-PLAYER
+   Evita que el mini-player tape la tracklist o el footer
+───────────────────────────────────────────────────── */
+
+/* En páginas de álbum: el player sticky original + mini-player
+   se superponen. Ocultamos el sticky en favor del mini-player
+   cuando hay reproducción persistente */
+body.has-mini-player .player {
+  /* El mini-player reemplaza al player sticky en móvil */
+  display: none;
+}
+
+/* En desktop mantenemos ambos */
+@media (min-width: 769px) {
+  body.has-mini-player .player {
+    display: grid; /* Restaurar en desktop */
+    bottom: 64px;  /* Subirlo sobre el mini-player */
+  }
+  .mini-player__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0.65rem 2rem;
+  }
+}
+
+/* ── Ajuste de padding inferior en index ── */
+body.has-mini-player #footer {
+  padding-bottom: calc(var(--space-2xl, 4rem) + 70px);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .mini-player__inner {
+    grid-template-columns: 42px 1fr auto;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .mini-player__cover {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mini-player__title { font-size: 0.8rem; }
+  .mini-player__album { font-size: 0.65rem; }
+
+  .mini-player__btn {
+    padding: 4px 6px;
+    font-size: 0.9rem;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .mini-player__btn--play {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Ocultar prev en pantallas muy pequeñas */
+  @media (max-width: 360px) {
+    #mp-prev { display: none; }
+  }
+}

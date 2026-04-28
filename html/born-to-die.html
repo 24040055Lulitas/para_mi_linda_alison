@@ -20,6 +20,15 @@
 
   <!-- CSS específico de este álbum -->
   <link rel="stylesheet" href="../css/albums/born-to-die.css" />
+  <style>
+    /* Fix scroll dentro del iframe de app.html */
+    html, body {
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      height: auto !important;
+      min-height: 100%;
+    }
+  </style>
 </head>
 <body class="album-page" data-album="born-to-die">
 
@@ -28,7 +37,7 @@
 
   <!-- ── Navbar de retorno ── -->
   <nav class="album-nav">
-    <a href="../index.html" class="album-nav__back">
+    <a href="../index-content.html" class="album-nav__back" onclick="event.preventDefault();parent.postMessage({type:'NAVIGATE',href:'../index-content.html'},'*')">
       ← Volver
     </a>
     <span class="album-nav__for">Para Alison 🌹</span>
@@ -260,7 +269,7 @@
   <!-- Scripts -->
   <script src="../js/particles.js"></script>
   <script src="../js/player.js"></script>
-  <script src="../js/queue.js"></script>
   <script src="../js/album-nav.js"></script>
+<style>body{padding-bottom:90px!important}</style>
 </body>
 </html>

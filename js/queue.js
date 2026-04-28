@@ -162,6 +162,8 @@
     updateQueueBadge();
     renderQueuePanel();
     showToast(`+ Cola: ${title}`);
+    // Asegurar que el mini-player muestre el badge actualizado
+    if (window.LDR_MiniPlayer) window.LDR_MiniPlayer.updateBadge();
   }
 
   /* Quitar de la cola */
