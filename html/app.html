@@ -472,11 +472,15 @@
 
     /* ── URLs absolutas base (calculadas una vez al cargar) ──
        app.html vive en html/ → la raíz está un nivel arriba
-       Usamos location para calcular rutas absolutas y evitar 404 ── */
+       Usamos rutas relativas fixed para evitar 404 en GitHub Pages ── */
     var APP_DIR    = window.location.href.replace(/[^/]*$/, "");  // html/
     var ROOT_DIR   = APP_DIR.replace(/html\/$/, "");              // raíz/
     var INDEX_URL  = ROOT_DIR + "index-content.html";             // raíz/index-content.html
     var HTML_DIR   = APP_DIR;                                      // html/ (para los álbumes)
+
+    /* Fallback: si las URLs calculadas no funcionan, usar rutas relativas fixed */
+    var INDEX_URL_FALLBACK = "index-content.html";
+    var HTML_DIR_FALLBACK  = "html/";
 
     /* ── Estado interno ── */
     var state = {
@@ -496,8 +500,8 @@
     var audio    = document.getElementById("global-audio");
     var frame    = document.getElementById("page-frame");
 
-    /* Establecer URL absoluta del iframe para evitar 404 por rutas relativas */
-    frame.src = INDEX_URL;
+    /* Establecer URL del iframe - usar ruta relativa fixed para evitar 404 */
+    frame.src = INDEX_URL_FALLBACK;
     var elThumb  = document.getElementById("gp-thumb");
     var elTitle  = document.getElementById("gp-title");
     var elAlbum  = document.getElementById("gp-album");
@@ -960,15 +964,15 @@
 
           // Calcular URL absoluta según el formato que llega:
           if (navHref === "../index-content.html" || navHref.indexOf("index-content") !== -1) {
-            // Volver al índice
-            absNav = INDEX_URL;
+            // Volver al índice - usar fallback que es más seguro
+            absNav = INDEX_URL_FALLBACK;
           } else if (navHref.startsWith("http")) {
             // Ya es absoluta
             absNav = navHref;
           } else {
             // Es un nombre de álbum: "born-to-die.html" o "html/born-to-die.html"
             var cleanName = navHref.replace("html/", "").replace("../html/", "");
-            absNav = HTML_DIR + cleanName;
+            absNav = HTML_DIR_FALLBACK + cleanName;
           }
 
           frame.src = absNav;
