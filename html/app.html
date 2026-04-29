@@ -470,6 +470,14 @@
     var K_QUEUE = "ldr_queue";
     var K_FAV   = "ldr_favorites";
 
+    /* ── URLs absolutas base (calculadas una vez al cargar) ──
+       app.html vive en html/ → la raíz está un nivel arriba
+       Usamos location para calcular rutas absolutas y evitar 404 ── */
+    var APP_DIR    = window.location.href.replace(/[^/]*$/, "");  // html/
+    var ROOT_DIR   = APP_DIR.replace(/html\/$/, "");              // raíz/
+    var INDEX_URL  = ROOT_DIR + "index-content.html";             // raíz/index-content.html
+    var HTML_DIR   = APP_DIR;                                      // html/ (para los álbumes)
+
     /* ── Estado interno ── */
     var state = {
       src:      "",
@@ -487,6 +495,9 @@
     /* ── Referencias DOM ── */
     var audio    = document.getElementById("global-audio");
     var frame    = document.getElementById("page-frame");
+
+    /* Establecer URL absoluta del iframe para evitar 404 por rutas relativas */
+    frame.src = INDEX_URL;
     var elThumb  = document.getElementById("gp-thumb");
     var elTitle  = document.getElementById("gp-title");
     var elAlbum  = document.getElementById("gp-album");
@@ -945,25 +956,41 @@
         /* Iframe navega — actualizar src del iframe sin recargar el audio */
         case "NAVIGATE":
           var navHref = d.href;
-          // Si app.html está en html/ y recibe "html/album.html", corregir a "album.html"
-          if (navHref.startsWith("html/")) {
-            navHref = navHref.replace("html/", "");
+          var absNav;
+
+          // Calcular URL absoluta según el formato que llega:
+          if (navHref === "../index-content.html" || navHref.indexOf("index-content") !== -1) {
+            // Volver al índice
+            absNav = INDEX_URL;
+          } else if (navHref.startsWith("http")) {
+            // Ya es absoluta
+            absNav = navHref;
+          } else {
+            // Es un nombre de álbum: "born-to-die.html" o "html/born-to-die.html"
+            var cleanName = navHref.replace("html/", "").replace("../html/", "");
+            absNav = HTML_DIR + cleanName;
           }
-          // Si viene como "../index-content.html" o similar, usarlo directo
-          // Si viene como "born-to-die.html" (relativo a html/), usarlo directo
-          frame.src = navHref;
+
+          frame.src = absNav;
           break;
       }
     });
 
-    /* Cuando el iframe carga una nueva página, decirle cuál pista está activa */
+    /* Cuando el iframe carga una nueva página */
     frame.addEventListener("load", function () {
-      if (state.src) {
-        setTimeout(function () {
+      setTimeout(function () {
+        if (state.src) {
           postToFrame({ type: "TRACK_ACTIVE", src: state.src });
-          postToFrame({ type: "QUEUE_COUNT", count: loadQueue().length });
-        }, 200);
-      }
+        }
+        postToFrame({ type: "QUEUE_COUNT", count: loadQueue().length });
+        // Notificar favoritas al iframe (para actualizar botones ♡/♥)
+        try {
+          var favs = JSON.parse(localStorage.getItem(K_FAV) || "[]");
+          favs.forEach(function(f) {
+            postToFrame({ type: "FAV_UPDATE", src: f.src, isFav: true });
+          });
+        } catch(_) {}
+      }, 250);
     });
 
     /* ═══════════════════════════════════════════════
